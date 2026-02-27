@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Documentos</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        h1 { color: #1a1a2e; margin-bottom: 1rem; }
+        p { color: #6c757d; margin-bottom: 2rem; }
+        .btn-login {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4a90d9;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .btn-login:hover { background: #3a7bc8; }
+    </style>
+</head>
+<body>
+    <h1>Gestor de Documentos</h1>
+    <p>Inicia sesión con Google para acceder al panel de gestión.</p>
+    <a th:href="@{/login}" class="btn-login">Iniciar sesión</a>
+</body>
+</html>
