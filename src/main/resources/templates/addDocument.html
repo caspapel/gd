@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,10 +45,14 @@
     <h1>Añadir documento</h1>
     <nav style="margin-bottom: 1.5rem;">
         <a href="/" style="color: #4a90d9; text-decoration: none; margin-right: 1rem;">Inicio</a>
-        <a href="/downloadDocument" style="color: #4a90d9; text-decoration: none;">Descargar documento</a>
+        <a href="/downloadDocument" style="color: #4a90d9; text-decoration: none; margin-right: 1rem;">Descargar documento</a>
+        <span sec:authentication="name" style="color: #6c757d; margin-right: 1rem;"></span>
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" style="background: none; border: none; color: #4a90d9; cursor: pointer; padding: 0;">Cerrar sesión</button>
+        </form>
     </nav>
     <div th:if="${success != null}" th:class="${success} ? 'alert alert-success' : 'alert alert-error'" th:text="${message}"></div>
-    <form method="post" action="/addDocument" enctype="multipart/form-data">
+    <form method="post" th:action="@{/addDocument}" enctype="multipart/form-data">
         <div class="form-group">
             <label for="document">Selecciona un archivo</label>
             <input type="file" id="document" name="document" required accept="*/*">
