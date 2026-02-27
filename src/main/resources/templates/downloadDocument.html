@@ -53,10 +53,11 @@
 <body>
     <h1>Descargar documentos</h1>
     <nav class="nav">
-        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/panel}">Panel</a>
         <a th:href="@{/addDocument}">Añadir documento</a>
         <span sec:authentication="name" style="color: #6c757d;"></span>
-        <form th:action="@{/logout}" method="post" style="display: inline;">
+        <form action="/logout" method="post" style="display: inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <button type="submit" style="background: none; border: none; color: #4a90d9; cursor: pointer; padding: 0;">Cerrar sesión</button>
         </form>
     </nav>
