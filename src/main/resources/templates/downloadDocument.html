@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,6 +55,10 @@
     <nav class="nav">
         <a th:href="@{/}">Inicio</a>
         <a th:href="@{/addDocument}">Añadir documento</a>
+        <span sec:authentication="name" style="color: #6c757d;"></span>
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" style="background: none; border: none; color: #4a90d9; cursor: pointer; padding: 0;">Cerrar sesión</button>
+        </form>
     </nav>
     <div th:if="${error}" class="alert-error" th:text="${error}"></div>
     <th:block th:if="${documents != null and !documents.isEmpty()}">
