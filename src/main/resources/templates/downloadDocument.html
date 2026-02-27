@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar documentos</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            max-width: 640px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 { color: #1a1a2e; margin-bottom: 1.5rem; }
+        .nav { margin-bottom: 1.5rem; }
+        .nav a { color: #4a90d9; text-decoration: none; margin-right: 1rem; }
+        .nav a:hover { text-decoration: underline; }
+        .doc-list { list-style: none; padding: 0; margin: 0; }
+        .doc-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .doc-item:hover { background: #f0f7ff; }
+        .doc-name { font-weight: 500; color: #333; }
+        .btn-download {
+            padding: 0.5rem 1rem;
+            background: #4a90d9;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .btn-download:hover { background: #3a7bc8; }
+        .empty { color: #6c757d; padding: 2rem; text-align: center; }
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Descargar documentos</h1>
+    <nav class="nav">
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/addDocument}">Añadir documento</a>
+    </nav>
+    <div th:if="${error}" class="alert-error" th:text="${error}"></div>
+    <th:block th:if="${documents != null and !documents.isEmpty()}">
+        <ul class="doc-list">
+            <li th:each="doc : ${documents}" class="doc-item">
+                <span class="doc-name" th:text="${doc}"></span>
+                <a th:href="@{/downloadDocument/file/{name}(name=${doc})}" class="btn-download">Descargar</a>
+            </li>
+        </ul>
+    </th:block>
+    <div th:if="${documents != null and documents.isEmpty()}" class="empty">
+        No hay documentos almacenados. <a th:href="@{/addDocument}">Añadir el primero</a>
+    </div>
+</body>
+</html>
