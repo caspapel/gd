@@ -7,5 +7,4 @@ target/
 documents/
 *.md
 !README.md
-Dockerfile
 .dockerignore
