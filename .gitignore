@@ -33,3 +33,6 @@ build/
 
 ### Documentos subidos ###
 documents/
+
+### Credenciales OAuth (no commitear) ###
+application-oauth.properties
