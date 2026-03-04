@@ -73,5 +73,6 @@
     <div th:if="${documents != null and documents.isEmpty()}" class="empty">
         No hay documentos almacenados. <a th:href="@{/addDocument}">Añadir el primero</a>
     </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
