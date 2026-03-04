@@ -34,7 +34,7 @@ steps:
       - '--image=europe-southwest1-docker.pkg.dev/$PROJECT_ID/gd/gd-app:$COMMIT_SHA'
       - '--region=europe-southwest1'
       - '--platform=managed'
-      - '--allowunauthenticated'
+      - '--allow-unauthenticated'
 
 images:
   - 'europe-southwest1-docker.pkg.dev/$PROJECT_ID/gd/gd-app:$COMMIT_SHA'
